@@ -35,7 +35,7 @@
         }
 
         .stick-figures {
-            font-size: 36px;
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
@@ -106,13 +106,13 @@
             <img src="chitkara-university9168.png" alt="Logo" class="logo-img">
         </div>
         <h1>Hangman Game</h1>
-        <div class="stick-figures" id="stickFigures">Attempts Left: 6</div>
+        <div class="stick-figures" id="stickFigures">Attempts Left: 10</div>
         <div class="word-display" id="wordDisplay"></div>
         <div class="input-section" id="inputSection">
             <input type="text" id="guessInput" maxlength="1" placeholder="Enter a letter">
             <button id="guessButton">Guess</button>
         </div>
-        <div id="attempts">Attempts Left: <span id="attemptCount">6</span></div>
+        <div id="attempts">Attempts Left: <span id="attemptCount">10</span></div>
         <button id="replayButton">Replay</button>
         <div id="gameResult"></div>
     </div>
@@ -144,13 +144,13 @@
         let word, guessedLetters, attempts;
 
         const stickFigures = [
-            " O\n",
-            "/",
-            "|",
-            "\\",
-            " |\n",
-            "/ ",
-            "\\ "
+            "  _______\n",
+            " |/      |\n",
+            " |      (_)\n",
+            " |      \\|/\n",
+            " |       |\n",
+            " |      / \\\n",
+            " |_________\n"
         ];
 
         const stickFiguresContainer = document.getElementById("stickFigures");
@@ -169,7 +169,7 @@
         function initialize() {
             word = chooseWord();
             guessedLetters = new Set();
-            attempts = 6;
+            attempts = 10;
             updateDisplay();
             gameResult.innerText = "";
         }
