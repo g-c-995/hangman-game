@@ -69,6 +69,8 @@
         #attempts {
             margin-top: 20px;
             font-size: 18px;
+            opacity: 0; /* Set opacity to 0 */
+            transition: opacity 0.3s ease; /* Add transition effect */
         }
 
         #contributors {
@@ -118,6 +120,7 @@
             <input type="text" id="guessInput" maxlength="1" placeholder="Enter a letter">
             <button id="guessButton">Guess</button>
         </div>
+        <!-- Added id to the attempts left section -->
         <div id="attempts">Attempts Left: <span id="attemptCount">10</span></div>
         <button id="replayButton">Replay</button>
         <div id="gameResult"></div>
@@ -146,7 +149,7 @@
     </div>
 
     <script>
-        const words = ["chitkara", "steroids", "punjab", "haryana", "github", ""];
+        const words = ["chitkara", "steroids", "punjab", "haryana", "github", "ambala"];
         let word, guessedLetters, attempts;
 
         const stickFigures = [
@@ -227,10 +230,10 @@
 
         function checkGameStatus() {
             if (!wordDisplay.innerText.includes("_")) {
-                gameResult.innerText = "Congratulations! You won!";
+                gameResult.innerText = "\n Congratulations! You won!";
                 disableInput();
             } else if (attempts === 0) {
-                gameResult.innerText = "Sorry! You lost. The word was: " + word;
+                gameResult.innerText = "\n Sorry! You lost. The word was: " + word;
                 disableInput();
             }
         }
@@ -258,5 +261,4 @@
 
         initialize();
     </script>
-</body>
 </html>
