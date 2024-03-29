@@ -98,6 +98,11 @@
         .hidden {
             display: none;
         }
+
+        #guessedLetters {
+            margin-top: 20px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +113,7 @@
         <h1>Hangman Game</h1>
         <div class="stick-figures" id="stickFigures">Attempts Left: 10</div>
         <div class="word-display" id="wordDisplay"></div>
+        <div id="guessedLetters">Guessed Letters: <span id="guessedLettersDisplay"></span></div>
         <div class="input-section" id="inputSection">
             <input type="text" id="guessInput" maxlength="1" placeholder="Enter a letter">
             <button id="guessButton">Guess</button>
@@ -118,7 +124,7 @@
     </div>
 
     <div id="contributors">
-        <h2>Contributors</h2>
+        <h2>&nbsp;Contributors</h2>
         <table>
             <tr>
                 <th>Name</th>
@@ -140,21 +146,23 @@
     </div>
 
     <script>
-        const words = ["python", "hangman", "computer", "keyboard", "programming"];
+        const words = ["chitkara", "steroids", "punjab", "haryana", "github", ""];
         let word, guessedLetters, attempts;
 
         const stickFigures = [
-            "  _______\n",
-            " |/      |\n",
-            " |      (_)\n",
-            " |      \\|/\n",
-            " |       |\n",
-            " |      / \\\n",
-            " |_________\n"
-        ];
+    "        _______\n",
+    "             |\n",
+    "             (_)\n",
+    "             \\|/\n",
+    "              |\n",
+    "             / \\\n",
+    "    ____________\n"
+];
+
 
         const stickFiguresContainer = document.getElementById("stickFigures");
         const wordDisplay = document.getElementById("wordDisplay");
+        const guessedLettersDisplay = document.getElementById("guessedLettersDisplay");
         const guessInput = document.getElementById("guessInput");
         const guessButton = document.getElementById("guessButton");
         const attemptCount = document.getElementById("attemptCount");
@@ -180,10 +188,11 @@
                 if (guessedLetters.has(letter)) {
                     displayWord += letter;
                 } else {
-                    displayWord += "_";
+                    displayWord += "_ ";
                 }
             }
             wordDisplay.innerText = displayWord;
+            guessedLettersDisplay.innerText = Array.from(guessedLetters).join(", ");
             attemptCount.innerText = attempts;
             updateStickFigures();
         }
